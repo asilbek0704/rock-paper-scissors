@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock, Paper & Scissors</title>
+    <link rel="stylesheet" href="./assets/styles/style.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <h1><span style="color: #b92eb9;">Rock</span>,<span style="color: #97c9da;">Paper</span> & 
+            <span style="color: #ff8989;">Scissors</span></h1>
+        <div class="statistic">
+            <div class="statistic-player">
+                <img src="./assets/images/icons/man.png" alt="🙋‍♂️">
+            </div>
+
+            <div class="statistic-scoreboard">
+                <p class="statistic-scoreboard__player">USER</p>
+
+                <div v-show="animation == true" class="statistic-scoreboard__result">
+                    {{countdown}}
+                </div>
+                <div v-show="animation == false" class="statistic-scoreboard__result">
+                    <span class="player-score">{{playerScore}}</span>-<span class="computer-score">{{AIScore}}</span>
+                </div>
+
+                <marquee class="instruction" behavior="scroll" direction="left">
+                    Rock “crushes” Scissors | Paper “covers” Rock | Scissors “cuts” Paper
+                </marquee>
+                <p class="statistic-scoreboard__computer">Computer</p>
+            </div>
+
+            <div class="statistic-computer">
+                <img src="./assets/images/icons/robot.png" alt="🤖">
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="content-player">
+                <img :class="animation ? 'move' : ''" :src="playerSrc" alt="">
+            </div>
+
+            <div class="content-computer">
+                <img :class="animation ? 'move' : ''" :src="AISrc" alt="">
+            </div>
+        </div>
+
+        <div class="controls">
+            <button :disabled="animation == true" :class="animation == true ? 'disabled' : ''" @click="compare('rock')"
+                data-role="rock">🗿</button>
+            <button :disabled="animation == true" :class="animation == true ? 'disabled' : ''" @click="compare('paper')"
+                data-role="paper">🧻</button>
+            <button :disabled="animation == true" :class="animation == true ? 'disabled' : ''"
+                @click="compare('scissors')" data-role="scissors">✂</button>
+        </div>
+
+        <div v-show="playerScore == finalResult || AIScore == finalResult" class="overlay">
+            <div class="finalResult">
+                <div v-show="playerScore == finalResult">
+                    <h3>You won! Congratulations🎉</h3>
+                    <p>Do you want to play again?</p>
+                </div>
+                <div v-show="AIScore == finalResult">
+                    <h3>Computer won, but everything is still ahead!</h3>
+                    <p>Do you want to take a rematch?</p>
+                </div>
+                <div class="finalResult-buttons">
+                    <button @click="reset">YES</button>
+                    <button @click="reload">NO</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+    <script src="./assets/scripts/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,298 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Tahoma;
+    background: #1f1f1f;
+}
+
+.wrapper {
+    min-height: 100vh;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+    font-size: 60px;
+    font-family: cursive;
+    margin-bottom: 50px;
+    color: #fa934e;
+}
+
+h1 span {
+    font-family: cursive;
+}
+
+.statistic {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto 50px;
+}
+
+.statistic-player img, .statistic-computer img {
+    width: 110px;
+    height: 110px;
+    font-size: 60px;
+    background: transparent;
+}
+
+.statistic-player, .statistic-computer {
+    border-radius: 50%;
+    padding: 20px;
+}
+
+.statistic-player {
+    background: #e0636f;
+}
+
+.statistic-computer {
+    background: #90d8f9;
+}
+
+.statistic-scoreboard {
+    width: 50%;
+    border: 7px solid #e0e0e0;
+    border-radius: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.statistic-scoreboard__player, .statistic-scoreboard__computer {
+    font-family: cursive;
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    padding: 8px;
+    top: 50%;
+}
+
+.statistic-scoreboard__player {
+    color: #fe4f60;
+    left: 0;
+    transform: translate(-52%, -60%);
+}
+
+.statistic-scoreboard__computer {
+    color: #90d8f9;
+    right: 0%;
+    transform: translate(52%, -60%);
+}
+
+.statistic-scoreboard__result {
+    background: transparent;
+    font-size: 100px;
+    font-weight: bold;
+    font-family: monospace;
+    color: #e0e0e0;
+    height: 125px;
+}
+
+.player-score {
+    color: #fe4f60;
+}
+
+.computer-score {
+    color: #90d8f9;
+}
+
+.instruction {
+    width: 97%;
+    font-size: 20px;
+    font-family: monospace;
+    color: #e0e0e0de;
+    padding: 10px 0;
+}
+
+.content {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 30px;
+    height: 270px;
+}
+
+.content-player {
+    transform: rotateZ(100deg);
+}
+
+.content-computer {
+    transform: rotateZ(-100deg) rotateY(180deg);
+}
+
+.content-player img {
+    background: transparent;
+    transition: 0.3s;
+}
+
+.content-computer img {
+    background: transparent;
+    transition: 0.3s;
+}
+
+.content img.move {
+    animation: motion 1.8s;
+}
+
+@keyframes motion {
+    0% {
+        transform: rotateZ(-10deg) translateX(-25px);
+    }
+    20% {
+        transform: rotateZ(10deg) translateX(15px);
+    }
+    40% {
+        transform: rotateZ(-10deg) translateX(-25px);
+    }
+    60% {
+        transform: rotateZ(10deg) translateX(15px);
+    }
+    80% {
+        transform: rotateZ(-10deg) translateX(-25px);
+    }
+    100% {
+        transform: rotateZ(0) translateX(0);
+    }
+}
+
+.controls {
+    width: 25%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.controls button {
+    padding: 15px 20px;
+    background: #a79f8a;
+    border: none;
+    outline: none;
+    font-size: 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .3s;
+    opacity: .5;
+    box-shadow: 0px 0px 25px 2px #a79f8a;
+    position: relative;
+}
+
+.controls button:not(:disabled):hover {
+    background: #fff1c7;
+    opacity: .9;
+    box-shadow: 0px 0px 25px 2px #fff1c7;
+}
+
+.controls button[data-role="scissors"] {
+    -webkit-text-stroke: 0.8px #292929;
+    color: #ff9900;
+    font-size: 28px;
+}
+
+.controls button:before {
+    font-size: 14px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%);
+    color: #000000;
+    -webkit-text-stroke: 0px;
+    opacity: 0;
+    transition: .3s;
+}
+
+.controls button:hover::before {
+    opacity: 1;
+}
+
+.controls button[data-role="rock"]:before {
+    content: 'rock';
+}
+
+.controls button[data-role="paper"]:before {
+    content: 'paper';
+}
+
+.controls button[data-role="scissors"]:before {
+    content: 'scissors';
+}
+
+.controls button.disabled {
+    opacity: .4;
+}
+
+.overlay {
+    background: #000000dc;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.finalResult {
+    width: 30%;
+    background: #f7e2d4;
+    padding: 30px 0 0;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+.finalResult * {
+    background: transparent;
+}
+
+.finalResult div:not(.finalResult-buttons) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.finalResult h3 {
+    font-family: cursive;
+    color: #8b5b5b;
+    margin-bottom: 15px;
+}
+
+.finalResult p {
+    font-family: monospace;
+    font-size: 17px;
+    margin-bottom: 15px;
+}
+
+.finalResult-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.finalResult-buttons button {
+    border: none;
+    outline: none;
+    padding: 20px 0;
+    width: 100%;
+    font-weight: bold;
+    font-family: cursive;
+    cursor: pointer;
+    transition: .3s;
+    background: #ffab3e;
+}
+
+.finalResult-buttons button:hover {
+    background: #f3951a;
+}
